@@ -11,15 +11,15 @@ class Node
 {
     public:
         Node(T);
-        T* getInfo();
-        void setInfo(T);
+        int getKey();
+        void setKey(int);
 
         void add(T);
         void remove(T);
         bool has(T);
         void balance();
 
-        void printTree(ostream&);
+        friend ostream& operator<<(ostream&, const Node<T>&);
     private:
         int key;
         T info;
@@ -28,7 +28,7 @@ class Node
         int factor;
 
         bool isLeaf();
-        T getLastInfo(unsigned int); //menor dos maiores -> 0; maior dos menores -> 1
+        int getLastKey(unsigned int); //menor dos maiores -> 0; maior dos menores -> 1
 
         void rotateLeft();
         void rotateRight();
@@ -38,6 +38,8 @@ class Node
 
         void solveFactor();
         int height(int);
+
+        void printTree(ostream&);
 };
 
 #include "Node.cpp"

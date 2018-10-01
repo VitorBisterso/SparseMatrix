@@ -9,12 +9,6 @@ Node<T>::Node(T key)
 }
 
 template<class T>
-T* Node<T>::getInfo()
-{
-    return this->key;
-}
-
-template<class T>
 void Node<T>::add(T key)
 {
     if (key == this->key)
@@ -44,19 +38,19 @@ void Node<T>::add(T key)
 }
 
 template<class T>
-T Node<T>::getLastInfo(unsigned int i) //Menor dos maiores -> 0; Maior dos menores -> 1
+int Node<T>::getLastKey(unsigned int i) //Menor dos maiores -> 0; Maior dos menores -> 1
 {
     if (i == 0)
     {
         if (this->left == NULL)
             return this->key;
-        this->left->getLastInfo(0);
+        this->left->getLastKey(0);
     }
     else
     {
         if (this->right == NULL)
             return this->key;
-        this->right->getLastInfo(1);
+        this->right->getLastKey(1);
     }
 }
 
@@ -73,12 +67,12 @@ void Node<T>::remove(T key)
         else
         {
             if (this->left != NULL)
-                key = this->left->getLastInfo(1);
+                key = this->left->getLastKey(1);
             else //direita tem que ser diferente de nula porque n eh folha e esquerda eh nula
-                key = this->right->getLastInfo(0);
+                key = this->right->getLastKey(0);
 
             this->remove(key);
-            this->setInfo(key);
+            this->setKey(key);
             this->solveFactor();
             return;
         }
@@ -106,7 +100,13 @@ void Node<T>::remove(T key)
 }
 
 template<class T>
-void Node<T>::setInfo(T key)
+int Node<T>::getKey()
+{
+    return this->key;
+}
+
+template<class T>
+void Node<T>::setKey(int key)
 {
     this->key = key;
 }
@@ -186,23 +186,23 @@ template<class T>
 int Node<T>::height(int height)
 {
     int currentHeight = height + 1;
-    int resultado = currentHeight;
+    int result = currentHeight;
 
     if (this->left != NULL)
     {
-        int heightEsquerda = this->left->height(currentHeight);
-        if (heightEsquerda > resultado)
-            resultado = heightEsquerda;
+        int leftHeight = this->left->height(currentHeight);
+        if (leftHeight > result)
+            result = leftHeight;
     }
 
     if (this->right != NULL)
     {
-        int heightDireita = this->right->height(currentHeight);
-        if (heightDireita > resultado)
-            resultado = heightDireita;
+        int rightHeight = this->right->height(currentHeight);
+        if (rightHeight > result)
+            result = rightHeight;
     }
 
-    return resultado;
+    return result;
 }
 
 template<class T>
@@ -236,9 +236,16 @@ void Node<T>::printTree(ostream &os)
     if (this->left != NULL)
         this->left->printTree(os);
 
-    os << this->key << ", " << this->factor;
+    os << this->info << ", " << this->factor;
 
     if (this->right != NULL)
         this->right->printTree(os);
     os << ")";
+}
+
+template <class T>
+ostream& operator<<(ostream &os, const Node<T>& node)
+{
+    node.printTree(os);
+    return os;
 }

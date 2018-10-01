@@ -18,9 +18,10 @@ class AvlTree
         void remove(T);
         bool has(T);
 
-        void printTree(ostream&);
+        friend ostream& operator<<(ostream&, const AvlTree<T>&);
     private:
         Node<T>* root;
+        void printTree(ostream&);
 };
 
 #include "AvlTree.cpp"

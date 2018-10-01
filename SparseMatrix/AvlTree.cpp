@@ -34,11 +34,18 @@ bool AvlTree<T>::has(T info)
     return this->root->has(info);
 }
 
+template <class T>
+ostream& operator<<(ostream &os, const AvlTree<T>& tree)
+{
+    tree.printTree(os);
+    return os;
+}
+
 template<class T>
 void AvlTree<T>::printTree(ostream &os)
 {
     if (this->root != NULL)
-        this->root->printTree(os);
+        os << this->root;
 
     os << endl;
 }
