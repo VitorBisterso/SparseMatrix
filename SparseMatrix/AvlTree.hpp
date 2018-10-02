@@ -14,14 +14,14 @@ class AvlTree
         AvlTree();
         Node<T>* getRoot();
 
-        void add(T);
-        void remove(T);
-        bool has(T);
-
-        friend ostream& operator<<(ostream&, const AvlTree<T>&);
+        void add(int, T);
+        void remove(int);
+        Node<T>* has(int);
+        template <class U>
+        friend ostream& operator<<(ostream&, const AvlTree<U>&);
     private:
         Node<T>* root;
-        void printTree(ostream&);
+        /*void printTree(ostream&);*/
 };
 
 #include "AvlTree.cpp"

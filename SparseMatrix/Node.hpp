@@ -10,16 +10,20 @@ template <class T>
 class Node
 {
     public:
-        Node(T);
+        Node(int, T);
         int getKey();
         void setKey(int);
 
-        void add(T);
-        void remove(T);
-        bool has(T);
+        T getInfo();
+        void setInfo(T);
+
+        void add(int, T);
+        void remove(int);
+        Node<T>* has(int);
         void balance();
 
-        friend ostream& operator<<(ostream&, const Node<T>&);
+        template <class U>
+        friend ostream& operator<<(ostream&, const Node<U>&);
     private:
         int key;
         T info;
@@ -29,6 +33,7 @@ class Node
 
         bool isLeaf();
         int getLastKey(unsigned int); //menor dos maiores -> 0; maior dos menores -> 1
+        T getLastInfo(unsigned int);//
 
         void rotateLeft();
         void rotateRight();
@@ -39,7 +44,7 @@ class Node
         void solveFactor();
         int height(int);
 
-        void printTree(ostream&);
+        /*void printTree(ostream&);*/
 };
 
 #include "Node.cpp"

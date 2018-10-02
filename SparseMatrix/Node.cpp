@@ -1,15 +1,15 @@
 template<class T>
-Node<T>::Node(T key)
+Node<T>::Node(int key, T info)
 {
     this->key = key;
     this->left = NULL;
     this->right = NULL;
-    this->info = NULL;
+    this->info = info;
     this->factor = 0;
 }
 
 template<class T>
-void Node<T>::add(T key)
+void Node<T>::add(int key, T info)
 {
     if (key == this->key)
         throw "Tree can not have repeated information!";
@@ -19,20 +19,20 @@ void Node<T>::add(T key)
         this->factor--;
         if (this->left == NULL)
         {
-            this->left = new Node<T>(key);
+            this->left = new Node<T>(key, info);
             return;
         }
-        this->left->add(key);
+        this->left->add(key, info);
     }
     else
     {
        this->factor++;
        if (this->right == NULL)
         {
-            this->right = new Node<T>(key);
+            this->right = new Node<T>(key, info);
             return;
         }
-        this->right->add(key);
+        this->right->add(key, info);
     }
     this->balance();
 }
@@ -55,24 +55,50 @@ int Node<T>::getLastKey(unsigned int i) //Menor dos maiores -> 0; Maior dos meno
 }
 
 template<class T>
-void Node<T>::remove(T key)
+T Node<T>::getLastInfo(unsigned int i) //Menor dos maiores -> 0; Maior dos menores -> 1
+{
+    if (i == 0)
+    {
+        if (this->left == NULL)
+            return this->info;
+        this->left->getLastInfo(0);
+    }
+    else
+    {
+        if (this->right == NULL)
+            return this->info;
+        this->right->getLastInfo(1);
+    }
+}
+
+template<class T>
+void Node<T>::remove(int key)
 {
     if(key == this->key)
     {
         if (this->isLeaf())
         {
             this->key = NULL;
+            this->info = NULL;
             return;
         }
         else
         {
+            T info;
             if (this->left != NULL)
+            {
                 key = this->left->getLastKey(1);
+                info = this->left->getLastInfo(1);
+            }
             else //direita tem que ser diferente de nula porque n eh folha e esquerda eh nula
+            {
                 key = this->right->getLastKey(0);
+                info = this->right->getLastInfo(0);
+            }
 
             this->remove(key);
             this->setKey(key);
+            this->setInfo(info);
             this->solveFactor();
             return;
         }
@@ -109,6 +135,18 @@ template<class T>
 void Node<T>::setKey(int key)
 {
     this->key = key;
+}
+
+template<class T>
+T Node<T>::getInfo()
+{
+    return this->info;
+}
+
+template<class T>
+void Node<T>::setInfo(T info)
+{
+    this->info = info;
 }
 
 template<class T>
@@ -206,21 +244,21 @@ int Node<T>::height(int height)
 }
 
 template<class T>
-bool Node<T>::has(T key)
+Node<T>* Node<T>::has(int key)
 {
     if (key == this->key)
-        return true;
+        return this;
     if (key < this->key)
     {
         if (this->left != NULL)
             this->left->has(key);
         else
-            return false;
+            return NULL;
     }
     else if (this->right != NULL)
         this->right->has(key);
     else
-        return false;
+        return NULL;
 }
 
 template<class T>
@@ -229,23 +267,31 @@ bool Node<T>::isLeaf()
     return (this->left == NULL && this->right == NULL);
 }
 
-template<class T>
+template <class T>
+ostream& operator<<(ostream &os, const Node<T>& node)
+{
+    os << "(";
+    if (node.left != NULL)
+        os << *node.left;
+
+    os << " " << node.key << " => " << node.info << " : " << node.factor << " ";
+
+    if (node.right != NULL)
+        os << *node.right;
+    os << ")";
+    return os;
+}
+
+/*template<class T>
 void Node<T>::printTree(ostream &os)
 {
     os << "(";
     if (this->left != NULL)
         this->left->printTree(os);
 
-    os << this->info << ", " << this->factor;
+    os << *this->info << ", " << this->factor;
 
     if (this->right != NULL)
         this->right->printTree(os);
     os << ")";
-}
-
-template <class T>
-ostream& operator<<(ostream &os, const Node<T>& node)
-{
-    node.printTree(os);
-    return os;
-}
+}*/
