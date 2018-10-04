@@ -19,7 +19,7 @@ class Node
 
         void add(unsigned int, T*);
         void remove(int);
-        T has(int);
+        bool has(int);
         Node<T>* hasNode(int);
         void balance();
 

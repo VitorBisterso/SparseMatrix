@@ -16,7 +16,7 @@ class AvlTree
 
         void add(unsigned int, T*);
         void remove(int);
-        T has(int);
+        bool has(int);
         Node<T>* hasNode(int);
         template <class U>
         friend ostream& operator<<(ostream&, const AvlTree<U>&);

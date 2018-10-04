@@ -84,7 +84,7 @@ void Node<T>::remove(int key)
         }
         else
         {
-            T info;
+            T* info;
             if (this->left != NULL)
             {
                 key = this->left->getLastKey(1);
@@ -244,10 +244,10 @@ int Node<T>::height(int height)
 }
 
 template<class T>
-T Node<T>::has(int key)
+bool Node<T>::has(int key)
 {
     if (key == this->key)
-        return this->info;
+        return true;
     if (key < this->key)
     {
         if (this->left != NULL)

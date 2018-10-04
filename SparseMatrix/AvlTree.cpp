@@ -29,8 +29,11 @@ void AvlTree<T>::remove(int key)
 }
 
 template<class T>
-T AvlTree<T>::has(int key)
+bool AvlTree<T>::has(int key)
 {
+    if (this->root == NULL)
+        return false;
+
     return this->root->has(key);
 }
 
