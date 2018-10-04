@@ -1,31 +1,44 @@
 # depslib dependency file v1.0
-1385313278 source:c:\users\u16195\desktop\sparsematrix\main.cpp
-	<iostream>
-
-1538478458 source:c:\users\u16195\desktop\sparsematrix\sparsematrix\main.cpp
+1538660221 source:c:\users\u16195\desktop\sparsematrix\sparsematrix\main.cpp
 	<iostream>
 	"Node.hpp"
 	"AvlTree.hpp"
+	"Line.hpp"
 	"SparseMatrix.hpp"
 
-1538478884 c:\users\u16195\desktop\sparsematrix\sparsematrix\node.hpp
+1538664474 c:\users\u16195\desktop\sparsematrix\sparsematrix\node.hpp
 	<iostream>
 	<cstdlib>
 	"Node.cpp"
 
-1538478882 c:\users\u16195\desktop\sparsematrix\sparsematrix\node.cpp
+1538664478 c:\users\u16195\desktop\sparsematrix\sparsematrix\node.cpp
 
-1538478168 c:\users\u16195\desktop\sparsematrix\sparsematrix\avltree.hpp
+1538662920 c:\users\u16195\desktop\sparsematrix\sparsematrix\avltree.hpp
 	"Node.hpp"
 	<iostream>
 	"AvlTree.cpp"
 
-1538478167 c:\users\u16195\desktop\sparsematrix\sparsematrix\avltree.cpp
+1538662928 c:\users\u16195\desktop\sparsematrix\sparsematrix\avltree.cpp
 
-1538403282 c:\users\u16195\desktop\sparsematrix\sparsematrix\sparsematrix.hpp
+1538653065 c:\users\u16195\desktop\sparsematrix\sparsematrix\column.hpp
 	"Node.hpp"
 	"AvlTree.hpp"
+	"Column.cpp"
+
+1538652786 c:\users\u16195\desktop\sparsematrix\sparsematrix\column.cpp
+
+1538664112 c:\users\u16195\desktop\sparsematrix\sparsematrix\line.hpp
+	"Node.hpp"
+	"AvlTree.hpp"
+	"Line.cpp"
+
+1538664111 c:\users\u16195\desktop\sparsematrix\sparsematrix\line.cpp
+
+1538664362 c:\users\u16195\desktop\sparsematrix\sparsematrix\sparsematrix.hpp
+	"Node.hpp"
+	"AvlTree.hpp"
+	"Line.hpp"
 	"SparseMatrix.cpp"
 
-1538478890 c:\users\u16195\desktop\sparsematrix\sparsematrix\sparsematrix.cpp
+1538664381 c:\users\u16195\desktop\sparsematrix\sparsematrix\sparsematrix.cpp
 

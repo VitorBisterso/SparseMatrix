@@ -13,7 +13,6 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
-					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -23,7 +22,6 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
-					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -38,6 +36,14 @@
 			<Option target="Release" />
 		</Unit>
 		<Unit filename="AvlTree.hpp" />
+		<Unit filename="Column.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="Column.hpp" />
+		<Unit filename="Line.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="Line.hpp" />
 		<Unit filename="Node.cpp">
 			<Option target="Release" />
 		</Unit>

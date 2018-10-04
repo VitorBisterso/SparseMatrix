@@ -14,9 +14,10 @@ class AvlTree
         AvlTree();
         Node<T>* getRoot();
 
-        void add(int, T);
+        void add(unsigned int, T*);
         void remove(int);
-        Node<T>* has(int);
+        T has(int);
+        Node<T>* hasNode(int);
         template <class U>
         friend ostream& operator<<(ostream&, const AvlTree<U>&);
     private:

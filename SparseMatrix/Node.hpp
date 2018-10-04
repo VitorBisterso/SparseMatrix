@@ -10,30 +10,31 @@ template <class T>
 class Node
 {
     public:
-        Node(int, T);
+        Node(int, T*);
         int getKey();
         void setKey(int);
 
-        T getInfo();
-        void setInfo(T);
+        T* getInfo();
+        void setInfo(T*);
 
-        void add(int, T);
+        void add(unsigned int, T*);
         void remove(int);
-        Node<T>* has(int);
+        T has(int);
+        Node<T>* hasNode(int);
         void balance();
 
         template <class U>
         friend ostream& operator<<(ostream&, const Node<U>&);
     private:
         int key;
-        T info;
+        T* info;
         Node<T>* left;
         Node<T>* right;
         int factor;
 
         bool isLeaf();
         int getLastKey(unsigned int); //menor dos maiores -> 0; maior dos menores -> 1
-        T getLastInfo(unsigned int);//
+        T* getLastInfo(unsigned int);//
 
         void rotateLeft();
         void rotateRight();

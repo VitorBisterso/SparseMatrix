@@ -3,6 +3,7 @@
 
 #include "Node.hpp"
 #include "AvlTree.hpp"
+#include "Line.hpp"
 
 template <class T>
 class SparseMatrix
@@ -13,7 +14,7 @@ class SparseMatrix
         T get(unsigned int, unsigned int);
         void put(unsigned int, unsigned int, T);
     private:
-        AvlTree<AvlTree<T>*>* lines;
+        AvlTree<Line<T> >* lines;
         T standardValue;
 };
 

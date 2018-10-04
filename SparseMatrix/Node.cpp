@@ -1,5 +1,5 @@
 template<class T>
-Node<T>::Node(int key, T info)
+Node<T>::Node(int key, T* info)
 {
     this->key = key;
     this->left = NULL;
@@ -9,7 +9,7 @@ Node<T>::Node(int key, T info)
 }
 
 template<class T>
-void Node<T>::add(int key, T info)
+void Node<T>::add(unsigned int key, T* info)
 {
     if (key == this->key)
         throw "Tree can not have repeated information!";
@@ -55,7 +55,7 @@ int Node<T>::getLastKey(unsigned int i) //Menor dos maiores -> 0; Maior dos meno
 }
 
 template<class T>
-T Node<T>::getLastInfo(unsigned int i) //Menor dos maiores -> 0; Maior dos menores -> 1
+T* Node<T>::getLastInfo(unsigned int i) //Menor dos maiores -> 0; Maior dos menores -> 1
 {
     if (i == 0)
     {
@@ -138,13 +138,13 @@ void Node<T>::setKey(int key)
 }
 
 template<class T>
-T Node<T>::getInfo()
+T* Node<T>::getInfo()
 {
     return this->info;
 }
 
 template<class T>
-void Node<T>::setInfo(T info)
+void Node<T>::setInfo(T* info)
 {
     this->info = info;
 }
@@ -244,10 +244,10 @@ int Node<T>::height(int height)
 }
 
 template<class T>
-Node<T>* Node<T>::has(int key)
+T Node<T>::has(int key)
 {
     if (key == this->key)
-        return this;
+        return this->info;
     if (key < this->key)
     {
         if (this->left != NULL)
@@ -257,6 +257,24 @@ Node<T>* Node<T>::has(int key)
     }
     else if (this->right != NULL)
         this->right->has(key);
+    else
+        return NULL;
+}
+
+template<class T>
+Node<T>* Node<T>::hasNode(int key)
+{
+    if (key == this->key)
+        return this;
+    if (key < this->key)
+    {
+        if (this->left != NULL)
+            this->left->hasNode(key);
+        else
+            return NULL;
+    }
+    else if (this->right != NULL)
+        this->right->hasNode(key);
     else
         return NULL;
 }

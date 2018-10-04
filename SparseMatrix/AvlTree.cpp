@@ -11,7 +11,7 @@ Node<T>* AvlTree<T>::getRoot()
 }
 
 template<class T>
-void AvlTree<T>::add(int key, T info)
+void AvlTree<T>::add(unsigned int key, T* info)
 {
     if (this->root == NULL)
     {
@@ -29,9 +29,18 @@ void AvlTree<T>::remove(int key)
 }
 
 template<class T>
-Node<T>* AvlTree<T>::has(int key)
+T AvlTree<T>::has(int key)
 {
     return this->root->has(key);
+}
+
+template<class T>
+Node<T>* AvlTree<T>::hasNode(int key)
+{
+    if (this->root != NULL)
+        return this->root->hasNode(key);
+
+    return NULL;
 }
 
 template<class T>
