@@ -292,7 +292,7 @@ ostream& operator<<(ostream &os, const Node<T>& node)
     if (node.left != NULL)
         os << *node.left;
 
-    os << " " << node.key << " => " << node.info << " : " << node.factor << " ";
+    os << "Key: " << node.key << " Info: " << *node.info << " Factor: " << node.factor << " ";
 
     if (node.right != NULL)
         os << *node.right;

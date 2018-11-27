@@ -13,6 +13,9 @@ class SparseMatrix
 
         T get(unsigned int, unsigned int);
         void put(unsigned int, unsigned int, T);
+
+        template <class U>
+        friend ostream& operator<<(ostream&, const SparseMatrix<U>&);
     private:
         AvlTree<Line<T> >* lines;
         T standardValue;

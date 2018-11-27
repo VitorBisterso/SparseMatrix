@@ -10,6 +10,9 @@ class Line
     public:
         Line();
         AvlTree<T>* getColumns();
+
+        template <class U>
+        friend ostream& operator<<(ostream&, const Line<U>&);
     private:
         AvlTree<T>* columns;
 };
