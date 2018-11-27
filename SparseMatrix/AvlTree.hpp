@@ -13,7 +13,6 @@ class AvlTree
     public:
         AvlTree();
         Node<T>* getRoot();
-        int getNodeCount();
 
         void add(unsigned int, T*);
         void remove(int);
@@ -24,7 +23,6 @@ class AvlTree
         friend ostream& operator<<(ostream&, const AvlTree<U>&);
     private:
         Node<T>* root;
-        int nodeCount;
         /*void printTree(ostream&);*/
 };
 

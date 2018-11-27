@@ -2,7 +2,6 @@ template<class T>
 AvlTree<T>::AvlTree()
 {
     this->root = NULL;
-    this->nodeCount++;
 }
 
 template<class T>
@@ -20,7 +19,6 @@ void AvlTree<T>::add(unsigned int key, T* info)
         return;
     }
     this->root->add(key, info);
-    this->nodeCount++;
 }
 
 template<class T>
@@ -33,7 +31,6 @@ void AvlTree<T>::remove(int key)
         return;
     }
     this->root->balance();
-    this->nodeCount--;
 }
 
 template<class T>
@@ -52,12 +49,6 @@ Node<T>* AvlTree<T>::hasNode(int key)
         return this->root->hasNode(key);
 
     return NULL;
-}
-
-template<class T>
-int AvlTree<T>::getNodeCount()
-{
-    return this->nodeCount;
 }
 
 template<class T>

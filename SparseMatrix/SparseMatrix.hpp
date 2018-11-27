@@ -11,14 +11,16 @@ class SparseMatrix
     public:
         SparseMatrix(T);
 
-        T get(unsigned int, unsigned int);
-        void put(unsigned int, unsigned int, T);
+        T get(int, int) const;
+        void put(int, int, T);
 
         template <class U>
         friend ostream& operator<<(ostream&, const SparseMatrix<U>&);
     private:
         AvlTree<Line<T> >* lines;
         T standardValue;
+
+        int maxLine, maxColumn;
 };
 
 #include "SparseMatrix.cpp"
