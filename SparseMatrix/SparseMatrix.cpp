@@ -55,6 +55,25 @@ void SparseMatrix<T>::put(unsigned int line, unsigned int column, T value)
 template <class T>
 ostream& operator<<(ostream &os, const SparseMatrix<T>& matrix)
 {
-    os << *matrix.lines;
+    int limit;
+    if (matrix.lines != NULL)
+    {
+        if (matrix.lines->getRoot()->getInfo()->getColumns() != NULL)
+        {
+            if (matrix.lines->getNodeCount() >= matrix.lines->getRoot()->getInfo()->getColumns()->getNodeCount())
+                limit = matrix.lines->getNodeCount();
+            else
+                limit = matrix.lines->getRoot()->getInfo()->getColumns()->getNodeCount();
+            for (int i = 0; i < limit; i++)
+                for (int j = 0; j < limit; j++)
+                    os << matrix.get(i, j) << "  ";
+        }
+        else
+        {
+            limit = matrix.lines->getNodeCount();
+            for (int i = 0; i < limit; i++)
+                os << matrix.get(0, i) << "  ";
+        }
+    }
     return os;
 }

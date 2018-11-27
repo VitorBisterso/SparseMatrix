@@ -13,15 +13,18 @@ class AvlTree
     public:
         AvlTree();
         Node<T>* getRoot();
+        int getNodeCount();
 
         void add(unsigned int, T*);
         void remove(int);
         bool has(int);
         Node<T>* hasNode(int);
+
         template <class U>
         friend ostream& operator<<(ostream&, const AvlTree<U>&);
     private:
         Node<T>* root;
+        int nodeCount;
         /*void printTree(ostream&);*/
 };
 
