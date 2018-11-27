@@ -11,6 +11,9 @@ T SparseMatrix<T>::get(unsigned int line, unsigned int column)
     if (this->lines->getRoot() == NULL)
         return this->standardValue;
 
+    if (this->lines->hasNode(line) == NULL)
+        return this->standardValue;
+
     Node<Line<T> >* lineNode = this->lines->hasNode(line);
     if (lineNode->getInfo()->getColumns()->getRoot() == NULL)
         return this->standardValue;
