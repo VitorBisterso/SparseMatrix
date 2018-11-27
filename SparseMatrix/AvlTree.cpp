@@ -25,6 +25,11 @@ template<class T>
 void AvlTree<T>::remove(int key)
 {
     this->root->remove(key);
+    if (this->root->getInfo() == NULL)
+    {
+        this->root = NULL;
+        return;
+    }
     this->root->balance();
 }
 
@@ -51,6 +56,8 @@ ostream& operator<<(ostream &os, const AvlTree<T>& tree)
 {
     if (tree.root != NULL)
         os << *tree.root;
+    else
+        os << "(null)";
 
     os << endl;
     return os;

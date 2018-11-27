@@ -43,7 +43,7 @@ int main()
                 try
                 {
                     matrix->put(line, column, value);
-                    cout << "Valor inserido com sucesso";
+                    cout << "Operacao efetuada com sucesso";
                 }
                 catch(exception &err)
                 {
