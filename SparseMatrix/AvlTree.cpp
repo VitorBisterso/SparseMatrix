@@ -11,26 +11,31 @@ Node<T>* AvlTree<T>::getRoot()
 }
 
 template<class T>
-void AvlTree<T>::add(unsigned int key, T* info)
+void AvlTree<T>::add(unsigned int key, T info)
 {
+    T* clone = new T(info);
     if (this->root == NULL)
     {
         this->root = new Node<T>(key, info);
         return;
     }
-    this->root->add(key, info);
+    if (!this->root->has(key))
+        this->root->add(key, info);
 }
 
 template<class T>
 void AvlTree<T>::remove(int key)
 {
-    this->root->remove(key);
-    if (this->root->getInfo() == NULL)
+    if (this->root != NULL)
     {
-        this->root = NULL;
-        return;
+        this->root->remove(key);
+        if (this->root->getInfo() == NULL)
+        {
+            this->root = NULL;
+            return;
+        }
+        this->root->balance();
     }
-    this->root->balance();
 }
 
 template<class T>

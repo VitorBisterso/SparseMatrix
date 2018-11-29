@@ -14,7 +14,7 @@ class AvlTree
         AvlTree();
         Node<T>* getRoot();
 
-        void add(unsigned int, T*);
+        void add(unsigned int, T);
         void remove(int);
         bool has(int);
         Node<T>* hasNode(int);
